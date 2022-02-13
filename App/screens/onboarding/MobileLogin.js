@@ -31,38 +31,52 @@ export default function MobileLogin(props) {
     });
   }, [props.navigation]);
   return (
-      <KeyboardAwareScrollView  style={styles.container}>
-        <View>
-          <CText
-            style={{
-              ...styles.heading,
-              marginTop:StatusBar.currentHeight+headerHeight,
-            }}>
-            Enter your mobile number
-          </CText>
-          <InputField
-            preValue="+91"
-            label="Mobile Number"
-            containerStyle={{marginTop: 30}}
-            leftIcon={require('../../icons/Onboarding/flag.png')}
-          />
-        </View>
-        <View style={styles.footer}>
-          <RoundButton
-          icon={require("../../icons/Vector.png")}
-          buttonStyle={{width:67,height:67,borderRadius:50,alignSelf:'flex-end'}}
-          iconStyle={{marginRight:0,width:10,height:18,alignSelf:'center'}}
-          onPress={()=>props.navigation.navigate("OtpVerify")}/>
-          </View>
-      </KeyboardAwareScrollView>
+    <KeyboardAwareScrollView
+      extraScrollHeight={100}
+      enableOnAndroid={true}
+      style={styles.container}>
+      <View>
+        <CText
+          style={{
+            ...styles.heading,
+            marginTop: StatusBar.currentHeight + headerHeight,
+          }}>
+          Enter your mobile number
+        </CText>
+        <InputField
+          preValue="+91"
+          label="Mobile Number"
+          containerStyle={{marginTop: 30}}
+          leftIcon={require('../../icons/Onboarding/flag.png')}
+        />
+      </View>
+      <View style={styles.footer}>
+        <RoundButton
+          icon={require('../../icons/Vector.png')}
+          buttonStyle={{
+            width: 67,
+            height: 67,
+            borderRadius: 50,
+            alignSelf: 'flex-end',
+          }}
+          iconStyle={{
+            marginRight: 0,
+            width: 10,
+            height: 18,
+            alignSelf: 'center',
+          }}
+          onPress={() => props.navigation.navigate('OtpVerify')}
+        />
+      </View>
+    </KeyboardAwareScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow:1,
+    flexGrow: 1,
     backgroundColor: '#fff',
-    padding:20,
+    padding: 20,
   },
   heading: {
     fontSize: 26,

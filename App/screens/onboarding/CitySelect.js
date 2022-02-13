@@ -31,6 +31,7 @@ export default function Login(props) {
   }, [props.navigation]);
   return (
     <KeyboardAwareScrollView
+    extraScrollHeight={100} enableOnAndroid={true}
       style={styles.container}
       keyboardShouldPersistTaps="always">
       <ImageBackground
@@ -68,7 +69,7 @@ export default function Login(props) {
         />
       </View>
       <View style={styles.footer}>
-        <PrimaryButton title="Submit" />
+        <PrimaryButton title="Submit" onPress={()=>{props.navigation.navigate("LoginFlow")}} />
       </View>
     </KeyboardAwareScrollView>
   );

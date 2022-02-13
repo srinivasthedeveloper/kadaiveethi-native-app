@@ -6,10 +6,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Welcome from './App/screens/login/Welcome';
 import Login from './App/screens/login/Login';
 import Signup from './App/screens/login/Signup';
+
 import Onboarding from './App/screens/onboarding/Onboarding';
 import MobileLogin from './App/screens/onboarding/MobileLogin';
 import OtpVerify from './App/screens/onboarding/OtpVerify';
 import CitySelect from './App/screens/onboarding/CitySelect';
+
+import Home from './App/screens/home/Home';
 
 const Stack = createStackNavigator();
 
@@ -73,6 +76,16 @@ export default function App() {
     );
   };
 
+  const HomeStack=()=>(
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{headerShown:false}}
+      />
+    </Stack.Navigator>
+  )
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
@@ -89,6 +102,11 @@ export default function App() {
         <Stack.Screen
           name="LoginFlow"
           component={LoginFlow}
+          options={{headerShown: false, headerBackTitle: 'Back'}}
+        />
+        <Stack.Screen
+          name="HomeStack"
+          component={HomeStack}
           options={{headerShown: false, headerBackTitle: 'Back'}}
         />
       </Stack.Navigator>

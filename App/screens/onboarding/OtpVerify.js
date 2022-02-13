@@ -31,14 +31,16 @@ export default function OtpVerify(props) {
     });
   }, [props.navigation]);
   return (
-    <KeyboardAwareScrollView style={styles.container}>
+    <KeyboardAwareScrollView
+      extraScrollHeight={100}
+      enableOnAndroid={true}
+      style={styles.container}>
       <View>
         <CText
           style={{
             ...styles.heading,
             marginTop: StatusBar.currentHeight + headerHeight,
-          }}
-        >
+          }}>
           Enter your 4-digit code
         </CText>
         <InputField

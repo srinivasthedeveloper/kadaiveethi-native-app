@@ -19,19 +19,26 @@ import InputField from '../../components/InputField';
 export default function Singup(props) {
   return (
     <KeyboardAwareScrollView
+      extraScrollHeight={100}
+      enableOnAndroid={true}
       style={styles.container}
       keyboardShouldPersistTaps="always">
-        <ImageBackground
-          source={require('../../images/Login/glassyBg.png')}
+      <ImageBackground
+        source={require('../../images/Login/glassyBg.png')}
+        style={{
+          ...styles.header,
+          resizeMode: 'stretch',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Image
+          source={require('../../images/Login/logo.png')}
           style={{
-            ...styles.header,
-            resizeMode: 'stretch',
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image source={require('../../images/Login/logo.png')} style={{marginTop:Platform.OS==='ios'?30:StatusBar.currentHeight}} />
-        </ImageBackground>
+            marginTop: Platform.OS === 'ios' ? 30 : StatusBar.currentHeight,
+          }}
+        />
+      </ImageBackground>
       <View style={styles.body}>
         <CText style={styles.heading}>Sign Up</CText>
         <CText style={{...styles.desc, marginBottom: 10}}>
@@ -86,7 +93,10 @@ export default function Singup(props) {
         </View>
       </View>
       <View style={styles.footer}>
-        <PrimaryButton title="Sign Up" />
+        <PrimaryButton
+          title="Sign Up"
+          onPress={() => props.navigation.replace('HomeStack')}
+        />
         <View
           style={{flexDirection: 'row', marginTop: 10, alignSelf: 'center'}}>
           <CText
@@ -97,7 +107,9 @@ export default function Singup(props) {
             }}>
             Already have an account?{' '}
           </CText>
-          <TouchableOpacity activeOpacity={0.5} onPress={()=>props.navigation.replace('Login')}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => props.navigation.replace('Login')}>
             <CText
               style={{
                 fontFamily: AppFonts.semiBold,
@@ -123,7 +135,7 @@ const styles = StyleSheet.create({
   },
   body: {
     padding: 20,
-    paddingTop:0,
+    paddingTop: 0,
   },
   heading: {
     fontSize: 26,

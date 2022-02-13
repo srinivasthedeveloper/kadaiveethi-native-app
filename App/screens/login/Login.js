@@ -19,19 +19,26 @@ import InputField from '../../components/InputField';
 export default function Login(props) {
   return (
     <KeyboardAwareScrollView
+      extraScrollHeight={100}
+      enableOnAndroid={true}
       style={styles.container}
       keyboardShouldPersistTaps="always">
-        <ImageBackground
-          source={require('../../images/Login/glassyBg.png')}
+      <ImageBackground
+        source={require('../../images/Login/glassyBg.png')}
+        style={{
+          ...styles.header,
+          resizeMode: 'stretch',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Image
+          source={require('../../images/Login/logo.png')}
           style={{
-            ...styles.header,
-            resizeMode: 'stretch',
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image source={require('../../images/Login/logo.png')} style={{marginTop:Platform.OS==='ios'?30:StatusBar.currentHeight}} />
-        </ImageBackground>
+            marginTop: Platform.OS === 'ios' ? 30 : StatusBar.currentHeight,
+          }}
+        />
+      </ImageBackground>
       <View style={styles.body}>
         <CText style={styles.heading}>Login</CText>
         <CText style={{...styles.desc, marginBottom: 10}}>
@@ -40,13 +47,13 @@ export default function Login(props) {
         <InputField
           label="Email"
           placeHolder="Enter your e-mail"
-          containerStyle={{marginTop:30}}
+          containerStyle={{marginTop: 30}}
         />
         <InputField
           label="Password"
           placeHolder="Enter passoword"
           isPassword
-          containerStyle={{marginTop:30}}
+          containerStyle={{marginTop: 30}}
         />
         <TouchableOpacity activeOpacity={0.5}>
           <CText style={{...styles.desc, marginTop: 15, textAlign: 'right'}}>
@@ -55,7 +62,10 @@ export default function Login(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.footer}>
-        <PrimaryButton title="Login" />
+        <PrimaryButton
+          title="Login"
+          onPress={() => props.navigation.replace('HomeStack')}
+        />
         <View
           style={{flexDirection: 'row', marginTop: 25, alignSelf: 'center'}}>
           <CText
@@ -66,7 +76,9 @@ export default function Login(props) {
             }}>
             Don’t have an account?{' '}
           </CText>
-          <TouchableOpacity activeOpacity={0.5} onPress={()=>props.navigation.replace('Signup')}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => props.navigation.replace('Signup')}>
             <CText
               style={{
                 fontFamily: AppFonts.semiBold,
@@ -92,7 +104,7 @@ const styles = StyleSheet.create({
   },
   body: {
     padding: 20,
-    paddingTop:0,
+    paddingTop: 0,
   },
   heading: {
     fontSize: 26,
