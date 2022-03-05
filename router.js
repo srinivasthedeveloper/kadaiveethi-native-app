@@ -13,6 +13,7 @@ import OtpVerify from './App/screens/onboarding/OtpVerify';
 import CitySelect from './App/screens/onboarding/CitySelect';
 
 import Home from './App/screens/home/Home';
+import ExploreItems from './App/screens/home/ExploreItems';
 
 const Stack = createStackNavigator();
 
@@ -108,6 +109,10 @@ export default function App() {
           name="HomeStack"
           component={HomeStack}
           options={{headerShown: false, headerBackTitle: 'Back'}}
+        />
+        <Stack.Screen
+          name="ExploreItems"
+          component={ExploreItems}
         />
       </Stack.Navigator>
     </NavigationContainer>

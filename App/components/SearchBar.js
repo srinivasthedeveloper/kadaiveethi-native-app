@@ -24,7 +24,7 @@ export default function SearchBar(props) {
         rightButtonsContainerStyle={{backgroundColor: 'transparent'}}
         emptyResultText=""
         containerStyle={{marginHorizontal: 20, marginVertical: 15}}
-        closeOnBlur={true}
+        // closeOnBlur={true}
         clearOnFocus={false}
         ChevronIconComponent={
           <Image source={require('../icons/home/down.png')} />
@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 30,
     left: 30,
-    elevation: 1,
     zIndex: 1,
   },
 });

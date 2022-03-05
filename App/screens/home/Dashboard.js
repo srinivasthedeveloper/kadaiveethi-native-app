@@ -67,8 +67,8 @@ const temp = [
   },
 ];
 
-const renderOffers = item => (
-  <View style={{...styles.offerContainer}}>
+const renderOffers = (item,index) => (
+  <View style={{...styles.offerContainer,marginLeft:index===0?20:0}}>
     <View>
       <Image source={item.image} style={{alignSelf: 'center'}} />
       <CText style={{fontFamily: AppFonts.bold}} numberOfLines={2}>
@@ -125,7 +125,15 @@ export default function Dashboard(props) {
           <CText style={{...styles.headText}}>Kinathukedavu, India</CText>
         </View>
       </View>
-      <SearchBar data={[{id: 1, title: 'apple'}]} />
+      <SearchBar
+        data={[
+          {id: 1, title: 'apple'},
+          {id: 1, title: 'Alpha'},
+          {id: 1, title: 'Alpha'},
+          {id: 1, title: 'Alpha'},
+          {id: 1, title: 'Alpha'},
+        ]}
+      />
       <View style={{height: 120, marginHorizontal: 20, marginBottom: 20}}>
         <AppIntroSlider
           data={slides}
@@ -135,7 +143,7 @@ export default function Dashboard(props) {
           showSkipButton={false}
         />
       </View>
-      <View style={{marginHorizontal: 20}}>
+      <View style={{marginLeft: 0}}>
         <View style={{...styles.offerHeaderView}}>
           <CText style={{...styles.offerHeader}}>Exclusive Offer</CText>
           <TouchableOpacity activeOpacity={0.5}>
@@ -147,12 +155,12 @@ export default function Dashboard(props) {
         <FlatList
           data={temp}
           horizontal
-          renderItem={({item}) => renderOffers(item)}
+          renderItem={({item,index}) => renderOffers(item,index)}
           showsHorizontalScrollIndicator={false}
-          keyExtractor={({index}) => index}
+          keyExtractor={(_,index) => `offer-${index}`}
         />
       </View>
-      <View style={{marginHorizontal: 20}}>
+      <View style={{marginLeft: 0}}>
         <View style={{...styles.offerHeaderView}}>
           <CText style={{...styles.offerHeader}}>Best Selling</CText>
           <TouchableOpacity activeOpacity={0.5}>
@@ -164,12 +172,12 @@ export default function Dashboard(props) {
         <FlatList
           data={temp}
           horizontal
-          renderItem={({item}) => renderOffers(item)}
+          renderItem={({item,index}) => renderOffers(item,index)}
           showsHorizontalScrollIndicator={false}
-          keyExtractor={({index}) => index}
+          keyExtractor={(_,index) => `selling-${index}`}
         />
       </View>
-      <View style={{marginHorizontal: 20, marginBottom: 20}}>
+      <View style={{marginLeft: 0, marginBottom: 20}}>
         <View style={{...styles.offerHeaderView}}>
           <CText style={{...styles.offerHeader}}>Groceries</CText>
           <TouchableOpacity activeOpacity={0.5}>
@@ -181,15 +189,16 @@ export default function Dashboard(props) {
         <FlatList
           data={slides}
           horizontal
-          renderItem={({item}) => (
+          renderItem={({item,index}) => (
             <View
               style={{
                 ...styles.miniSliderStyle,
                 backgroundColor: item.backgroundColor,
+                marginLeft:index===0?20:0,
               }}>
               <Image
                 source={require('../../images/Login/logo.png')}
-                style={{margin:15}}
+                style={{margin: 15}}
               />
               <CText style={{width: '40%', paddingRight: 10}} numberOfLines={2}>
                 {item.title}
@@ -197,14 +206,14 @@ export default function Dashboard(props) {
             </View>
           )}
           showsHorizontalScrollIndicator={false}
-          keyExtractor={({index}) => index}
+          keyExtractor={(_,index) => `grocBar${index}`}
         />
         <FlatList
           data={temp}
           horizontal
-          renderItem={({item}) => renderOffers(item)}
+          renderItem={({item,index}) => renderOffers(item,index)}
           showsHorizontalScrollIndicator={false}
-          keyExtractor={({index}) => index}
+          keyExtractor={(_,index) => `groc-${index}`}
         />
       </View>
     </ScrollView>
@@ -237,6 +246,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginHorizontal:20,
   },
   offerHeader: {
     fontSize: 24,
@@ -250,6 +260,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 18,
     maxWidth: 250,
-    maxHeight:100,
+    maxHeight: 100,
   },
 });

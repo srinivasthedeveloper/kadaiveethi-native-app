@@ -42,22 +42,24 @@ export default function Onboarding(props) {
           textInputprops={{editable:false,selectTextOnFocus:false}}
         />
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={.5}>
+        {/* <TouchableOpacity activeOpacity={.5}> */}
           <CText style={{...styles.desc, marginVertical: 30, textAlign: 'center'}}>
           Or connect with social media
           </CText>
-          </TouchableOpacity>
+          {/* </TouchableOpacity> */}
         <PrimaryButton
           title="Continue with Google"
           buttonStyle={{marginBottom: 20, backgroundColor: AppColor.blue}}
           leftIcon={require("../../icons/Onboarding/google.png")}
           leftIconStyle={{width:24,height:25,resizeMode:'contain'}}
+          onPress={()=>props.navigation.navigate("HomeStack")}
         />
         <PrimaryButton
           title="Continue with Facebook"
           buttonStyle={{backgroundColor: AppColor.darkBlue}}
           leftIcon={require("../../icons/Onboarding/fb.png")}
           leftIconStyle={{width:12,height:25,resizeMode:'contain'}}
+          onPress={()=>props.navigation.navigate("HomeStack")}
         />
       </View>
     </ScrollView>

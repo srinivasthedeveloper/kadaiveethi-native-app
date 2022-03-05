@@ -17,6 +17,10 @@ import AppFonts from '../../constants/AppFonts';
 import InputField from '../../components/InputField';
 
 import Dashboard from './Dashboard';
+import Explore from './Explore';
+import Favorite from './Favorite';
+import Cart from './Cart';
+import Account from './Account';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
@@ -65,7 +69,7 @@ export default function Home(props) {
 
         <Bottomtab.Screen
           name="Explore"
-          children={() => <Dashboard {...props} />}
+          children={() => <Explore {...props} />}
           options={{
             tabBarLabel: tabInfo => {
               return tabInfo.focused ? (
@@ -94,7 +98,7 @@ export default function Home(props) {
 
         <Bottomtab.Screen
           name="Cart"
-          children={() => <Dashboard {...props} />}
+          children={() => <Cart {...props} />}
           options={{
             tabBarLabel: tabInfo => {
               return tabInfo.focused ? (
@@ -123,7 +127,7 @@ export default function Home(props) {
 
         <Bottomtab.Screen
           name="Favorite"
-          children={() => <Dashboard {...props} />}
+          children={() => <Favorite {...props} />}
           options={{
             tabBarLabel: tabInfo => {
               return tabInfo.focused ? (
@@ -152,7 +156,7 @@ export default function Home(props) {
 
         <Bottomtab.Screen
           name="Account"
-          children={() => <Dashboard {...props} />}
+          children={() => <Account {...props} />}
           options={{
             tabBarLabel: tabInfo => {
               return tabInfo.focused ? (
